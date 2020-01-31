@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="nl">
+    <meta charset="UTF-8">
+    <title></title>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+    <script src="js/main.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <meta name="viewport"  content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div id="PopUpGemeente">
+    <h2>Kies uw gemeente</h2>
+    <div><ul id="popuplist" class="list-unstyled"></ul></div>
+
+</div>
+<header>
+    <h1></h1>
+</header>
+
+<nav>
+
+</nav>
+
+<main>
+    <section>
+        <h2 id="formtitle">Registratie Formulier</h2>
+        <form  id="testval" action="">
+
+            <ul class="list-unstyled">
+                <li><label class="l-column" for="usr_naam">naam</label><input class="r-column" type="text" name="usr_naam" id="usr_naam"></li>
+                <li><label class="l-column" for="voornaam">voornaam</label><input class="r-column" type="text" name="usr_voornaam" id="voornaam"></li>
+                <li><label class="l-column" for="straat">straat</label><input class="r-column"  type="text" name="usr_straat" id="straat"></li>
+                <li><label class="l-column" for="huisnr">huisnr</label><div class="r-column"><input  type="number" name="usr_huisnr" id="huisnr"><label for="bus">Bus</label><input type="text" name="usr_bus" id="bus"></div></li>
+                <li><label class="l-column" for="postcode">Postcode</label><div class="r-column"><input type="number" name="usr_postcode" id="postcode"><label for="gemeente">Gemeente</label><input  name="usr_gemeente" id="gemeente" type="text"></div></li>
+                <li><label class="l-column" for="telefoon">Telefoon</label><input class="r-column" type="tel" name="usr_telefoon" id="telefoon"></li>
+                <li><label class="l-column" for="E-mail">E-mail</label><input  class="r-column" type="email"  name="usr_email" id="E-mail"></li>
+                <li><label class="l-column" for="check">Controle?</label><input class="r-column"  type="checkbox" id="check" checked></li>
+                <input  type="hidden" name="formname" value="reg_form">
+            </ul>
+            <input type="button" value="Verzenden" id="Verzenden">
+            <div id="message"></div>
+
+        </form>
+    </section>
+
+</main>
+<aside>
+
+</aside>
+
+<footer>
+
+</footer>
+
+
+
+</body></html>
