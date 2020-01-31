@@ -13,13 +13,9 @@ $(function () {
 
     // Initiating te field on page load
     makefield()
-    procesClick()
-
 
     // Click events-------------------------------------------
-
-
-
+    procesClick()
 
 
     // Function declaration------------------------------------
