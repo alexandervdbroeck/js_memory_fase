@@ -4,24 +4,28 @@ $(function () {
 
     var playGround = $('#playground');
     var responseText = $('#responseText');
-    var playGroundRow = ".row"
-    var squareBlockClass = ".square"
+    var playGroundRow = ".row";
+    var squareBlockClass = ".square";
     var squareBlockDiv = "<div class='square'></div>";
     var rowDiv = "<div class='row'></div>";
     var clickCounter = 0;
-    var bgcolor = "white"
+    var bgcolor = "white";
+    var body = $('body');
 
     // Initiating te field on page load
-    makefield()
+    initializeField()
 
     // Click events-------------------------------------------
-    procesClick()
+    makeWhiteOnMouseDown();
 
+    countClicks();
+
+    getColorBackOnMouseUp();
 
     // Function declaration------------------------------------
 
     // Makes the play-field using 2 loops
-    function makefield (){
+    function initializeField (){
         // first make a Row
         for (let i = 0; i <10 ; i++) {
             playGround.append(rowDiv);
@@ -33,45 +37,45 @@ $(function () {
             }
         })
         // Color each square block to a random rgb color using steps of 50 (rgb 50,200,150)
-        $(playGround).find( squareBlockClass ).each(function (){
+        for (let i = 0; i < 100; i++) {
             var colorArray = getRandomColorNumberInArray()
-            $(this).css("background-color", "rgb("+colorArray[0]+","+colorArray[1]+","+colorArray[2]+")");
-        })
+            $('.square')[i].style.background="rgb("+colorArray[0]+","+colorArray[1]+","+colorArray[2]+")";
+        }
     }
-    function procesClick(){
+    function makeWhiteOnMouseDown(){
         $('body').on("mousedown",squareBlockClass,function () {
-            // Click counter
+            // switch colors
+            bgcolor = $(this).css("background-color");
+            $(this).css("background-color","white");
+
+        })
+    };
+
+    function countClicks() {
+        body.on('click',squareBlockClass,function () {
             clickCounter++;
             if(clickCounter == 1){
+
                 responseText.html("<p>Your first click</p>");
             }else
             {
                 responseText.html("<p>"+clickCounter+" : click\'s</p>");
             }
-            // switch colors
-            bgcolor = $(this).css("background-color");
-            $(this).css("background-color","white");
-
-            $(this).mouseup(function () {
-                $(this).css("background-color",bgcolor)
-            });
         })
-    };
+    }
 
-    //Makes an array with 3 random numbers
+    function getColorBackOnMouseUp() {
+        $('body').on("mouseup",squareBlockClass,function () {
+            // Set color Back
+            $(this).css("background-color",bgcolor)
+        })
+    }
+    //Makes an array with 3 random numbers who ara a multiple off 50 between 0 and 300.
     function getRandomColorNumberInArray() {
         var array = [];
         for (let i = 0; i <3 ; i++) {
-            array.push(RandomLeap50());
+            array.push(((Math.floor(Math.random() * 5))+1) * 50);
         }
         return array;
     }
-
-    // returns 50,100,150 ,200 or 250
-    function RandomLeap50() {
-        var random =  (Math.floor(Math.random() * 6))*50
-        if(random == 0) random = 50;
-        return random;
-    }
-
 })
